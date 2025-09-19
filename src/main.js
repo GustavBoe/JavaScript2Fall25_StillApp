@@ -36,8 +36,23 @@ async function generatePosts(posts) {
   }
 }
 async function main() {
-  const posts = await fetchPosts();
-  generatePosts(posts);
-  console.log(posts);
+  if (!localStorage.getItem("accessToken")) {
+    displayContainer.innerHTML = `
+    <h1>Still</h1>
+      <p>Get started at Still!</p>
+      <div class="index-button-container">
+        <button>Log in</button>
+        <p>Or</p>
+        <button>Create new profile</button>
+      </div>`;
+  } else {
+    try {
+      const posts = await fetchPosts();
+      generatePosts(posts);
+    } catch (error) {
+      console.log(error);
+      alert("Something wnt wrong, please return later!");
+    }
+  }
 }
 main();

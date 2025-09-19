@@ -3,9 +3,8 @@
 export const BASE_API_URL = "https://v2.api.noroff.dev";
 
 const AUTH_REGISTER_URL = `${BASE_API_URL}/auth/register`;
-const AUTH_LOGIN_URL = `${BASE_API_URL}/auth/login`;
+
 const registerForm = document.querySelector(`#register-form`);
-const loginForm = document.querySelector(`#login-form`);
 
 async function registerUser(userDetails) {
   try {
