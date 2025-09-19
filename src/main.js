@@ -1,6 +1,6 @@
 import { getFromLocalStorage } from "./utils/storage.js";
 const BASE_API_URL = "https://v2.api.noroff.dev";
-const POSTS_URL = `${BASE_API_URL}/social/posts`;
+export const POSTS_URL = `${BASE_API_URL}/social/posts`;
 const NOROFF_API_KEY = "98235bd0-6bd9-4268-8607-233ca60225b3";
 const displayContainer = document.getElementById("display-container");
 
@@ -22,7 +22,8 @@ async function fetchPosts() {
 }
 async function generatePosts(posts) {
   for (let i = 0; i < posts.length; i++) {
-    const postContainer = document.createElement("div");
+    const postContainer = document.createElement("a");
+    postContainer.setAttribute("href", `./post.html?id=${posts[i].id}`);
 
     const postTitle = document.createElement("h2");
     postTitle.textContent = posts[i].title;
