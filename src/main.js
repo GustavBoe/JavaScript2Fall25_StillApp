@@ -1,8 +1,6 @@
 import { getFromLocalStorage } from "./utils/storage.js";
-const BASE_API_URL = "https://v2.api.noroff.dev";
-export const POSTS_URL = `${BASE_API_URL}/social/posts`;
-const NOROFF_API_KEY = "98235bd0-6bd9-4268-8607-233ca60225b3";
-const displayContainer = document.getElementById("display-container");
+
+import { POSTS_URL, NOROFF_API_KEY, displayContainer } from "./utils/const.js";
 
 async function fetchPosts() {
   try {
@@ -20,7 +18,7 @@ async function fetchPosts() {
     console.log(error);
   }
 }
-async function generatePosts(posts) {
+export async function generatePosts(posts) {
   for (let i = 0; i < posts.length; i++) {
     const postContainer = document.createElement("a");
     postContainer.setAttribute("href", `./post.html?id=${posts[i].id}`);
@@ -36,16 +34,21 @@ async function generatePosts(posts) {
     displayContainer.append(postContainer);
   }
 }
+
 async function main() {
   if (!localStorage.getItem("accessToken")) {
     displayContainer.innerHTML = `
     <h1>Still</h1>
       <p>Get started at Still!</p>
       <div class="index-button-container">
-        <button>Log in</button>
+        <button id="login-button">Log in</button>
         <p>Or</p>
-        <button>Create new profile</button>
+        <button id="register-button">Create new profile</button>
       </div>`;
+    const loginButton = document.getElementById("login-button");
+    const registerButton = document.getElementById("register-button");
+    loginButton.addEventListener("click", onClickLogInButton);
+    registerButton.addEventListener("click", onCLickRegisterButton);
   } else {
     try {
       const posts = await fetchPosts();
@@ -56,4 +59,11 @@ async function main() {
     }
   }
 }
+function onClickLogInButton() {
+  window.location.href = "./login.html";
+}
+function onCLickRegisterButton() {
+  window.location.href = "./register.html";
+}
+
 main();

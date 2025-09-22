@@ -1,9 +1,5 @@
-import { getFromLocalStorage, addToLocalStorage } from "..//utils/storage.js";
-
-const BASE_API_URL = "https://v2.api.noroff.dev";
-const AUTH_LOGIN_URL = `${BASE_API_URL}/auth/login`;
-const loginForm = document.querySelector("#login-form");
-const logoutButton = document.getElementById("logout-button");
+import { addToLocalStorage } from "..//utils/storage.js";
+import { AUTH_LOGIN_URL, loginForm, logoutButton } from "..//utils/const.js";
 
 async function loginUser(userDetails) {
   try {
@@ -29,8 +25,10 @@ function onLoginFormSubmit(event) {
   const formFields = Object.fromEntries(formData);
   loginUser(formFields);
 }
-function clearStorage() {
+function logOut() {
   localStorage.clear();
+  alert("Logged out! Sending you to home page");
+  window.location.href = "/";
 }
 loginForm.addEventListener("submit", onLoginFormSubmit);
-logoutButton.addEventListener("click", clearStorage);
+logoutButton.addEventListener("click", logOut);

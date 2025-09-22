@@ -2,9 +2,7 @@
 
 export const BASE_API_URL = "https://v2.api.noroff.dev";
 
-const AUTH_REGISTER_URL = `${BASE_API_URL}/auth/register`;
-
-const registerForm = document.querySelector(`#register-form`);
+import { AUTH_REGISTER_URL, registerForm } from "../utils/const.js";
 
 async function registerUser(userDetails) {
   try {
