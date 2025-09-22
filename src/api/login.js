@@ -27,7 +27,7 @@ function onLoginFormSubmit(event) {
 }
 function logOut() {
   localStorage.clear();
-  alert("Logged out! Sending you to home page");
+  alert("Logged out! Sending you home");
   window.location.href = "./index.html";
 }
 loginForm.addEventListener("submit", onLoginFormSubmit);
