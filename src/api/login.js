@@ -28,7 +28,7 @@ function onLoginFormSubmit(event) {
 function logOut() {
   localStorage.clear();
   alert("Logged out! Sending you to home page");
-  window.location.href = "/";
+  window.location.href = "./index.html";
 }
 loginForm.addEventListener("submit", onLoginFormSubmit);
 logoutButton.addEventListener("click", logOut);
