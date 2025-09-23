@@ -1,6 +1,12 @@
 //This file will handle the different functions needed for authorizing a user//
-
-import { AUTH_REGISTER_URL, registerForm } from "../utils/const.js";
+import { getFromLocalStorage } from "../utils/storage.js";
+import {
+  AUTH_REGISTER_URL,
+  POSTS_URL,
+  registerForm,
+  createForm,
+  NOROFF_API_KEY,
+} from "../utils/const.js";
 
 async function registerUser(userDetails) {
   try {
@@ -23,9 +29,38 @@ function onRegisterFormSubmit(event) {
   const formData = new FormData(event.target);
 
   const formFields = Object.fromEntries(formData);
-  console.log(formFields);
 
   registerUser(formFields);
 }
 
 registerForm.addEventListener("submit", onRegisterFormSubmit);
+
+async function createPost(postDetails) {
+  try {
+    const accessToken = getFromLocalStorage("accessToken");
+    const fetchOptions = {
+      method: "POST",
+      body: JSON.stringify(postDetails),
+      headers: {
+        ContentType: "application/json",
+        Authorization: `Bearer ${accessToken}`,
+        "X-Noroff-API-Key": NOROFF_API_KEY,
+      },
+    };
+    const response = await fetch(POSTS_URL, fetchOptions);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function onCreateFormSubmit(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+
+  const formFields = Object.fromEntries(formData);
+
+  createPost(formFields);
+}
+
+createForm.addEventListener("submit", onCreateFormSubmit);

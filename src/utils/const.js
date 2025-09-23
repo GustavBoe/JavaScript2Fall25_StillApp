@@ -5,6 +5,8 @@ export const NOROFF_API_KEY = "98235bd0-6bd9-4268-8607-233ca60225b3";
 export const AUTH_REGISTER_URL = `${BASE_API_URL}/auth/register`;
 
 export const registerForm = document.querySelector(`#register-form`);
+
+export const createForm = document.querySelector("#create-form");
 //login.js
 export const AUTH_LOGIN_URL = `${BASE_API_URL}/auth/login`;
 export const loginForm = document.querySelector("#login-form");
