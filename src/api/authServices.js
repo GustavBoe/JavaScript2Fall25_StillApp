@@ -1,7 +1,5 @@
 //This file will handle the different functions needed for authorizing a user//
 
-export const BASE_API_URL = "https://v2.api.noroff.dev";
-
 import { AUTH_REGISTER_URL, registerForm } from "../utils/const.js";
 
 async function registerUser(userDetails) {
