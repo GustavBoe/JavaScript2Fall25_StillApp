@@ -25,11 +25,18 @@ export async function generatePosts(posts) {
 
     const postTitle = document.createElement("h2");
     postTitle.textContent = posts[i].title;
+    const postImage = document.createElement("img");
+    postImage.classList = "feedImage";
+    if (posts[i].media) {
+      postImage.src = posts[i].media.url;
+    } else {
+      postImage.src = "https://i.imghippo.com/files/AVMh8683c.png";
+    }
 
     const postBody = document.createElement("p");
     postBody.textContent = posts[i].body;
 
-    postContainer.append(postTitle, postBody);
+    postContainer.append(postTitle, postImage, postBody);
 
     displayContainer.append(postContainer);
   }

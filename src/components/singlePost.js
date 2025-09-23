@@ -23,8 +23,6 @@ async function fetchSinglePost() {
   }
 }
 async function generateSinglePost(post) {
-  console.log("single post");
-
   if (post.media) {
     const postContainer = document.createElement("div");
     const postTitle = document.createElement("h1");

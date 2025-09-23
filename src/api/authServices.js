@@ -1,12 +1,6 @@
 //This file will handle the different functions needed for authorizing a user//
-import { getFromLocalStorage } from "../utils/storage.js";
-import {
-  AUTH_REGISTER_URL,
-  POSTS_URL,
-  registerForm,
-  createForm,
-  NOROFF_API_KEY,
-} from "../utils/const.js";
+
+import { AUTH_REGISTER_URL, registerForm } from "../utils/const.js";
 
 async function registerUser(userDetails) {
   try {
