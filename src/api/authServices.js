@@ -40,12 +40,13 @@ async function createPost(postDetails) {
     const accessToken = getFromLocalStorage("accessToken");
     const fetchOptions = {
       method: "POST",
-      body: JSON.stringify(postDetails),
+
       headers: {
         ContentType: "application/json",
         Authorization: `Bearer ${accessToken}`,
         "X-Noroff-API-Key": NOROFF_API_KEY,
       },
+      body: JSON.stringify(postDetails),
     };
     const response = await fetch(POSTS_URL, fetchOptions);
   } catch (error) {
