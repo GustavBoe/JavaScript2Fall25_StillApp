@@ -6,6 +6,8 @@ export const AUTH_REGISTER_URL = `${BASE_API_URL}/auth/register`;
 
 export const registerForm = document.querySelector(`#register-form`);
 
+//postsServices.js
+
 export const createForm = document.querySelector("#create-form");
 //login.js
 export const AUTH_LOGIN_URL = `${BASE_API_URL}/auth/login`;
@@ -24,3 +26,6 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const PARAMETER_ID = urlParams.get("id");
 export const SINGLE_URL = `${POSTS_URL}/${PARAMETER_ID}`;
+
+//editPost.js
+export const editForm = document.querySelector("#edit-form");
