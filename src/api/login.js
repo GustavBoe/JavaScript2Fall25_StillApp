@@ -14,7 +14,9 @@ async function loginUser(userDetails) {
     const json = await response.json();
     console.log(json);
     const accessToken = json.data.accessToken;
+    const profileName = json.data.name;
     addToLocalStorage("accessToken", accessToken);
+    addToLocalStorage("profileName", profileName);
   } catch (error) {
     console.log(error);
   }

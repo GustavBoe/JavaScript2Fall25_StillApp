@@ -31,7 +31,9 @@ function onCreateFormSubmit(event) {
     url: postFields.url,
     alt: postFields.alt,
   };
+
   postFields.media = media;
+  postFields.author = author;
   createPost(postFields);
 }
 

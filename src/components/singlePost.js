@@ -3,10 +3,11 @@ import {
   NOROFF_API_KEY,
   singlePostContainer,
   SINGLE_URL,
+  profileName,
 } from "../utils/const.js";
 import { getFromLocalStorage } from "../utils/storage.js";
 
-async function fetchSinglePost() {
+export async function fetchSinglePost() {
   try {
     const accessToken = getFromLocalStorage("accessToken");
     const fetchOptions = {
@@ -23,35 +24,37 @@ async function fetchSinglePost() {
   }
 }
 async function generateSinglePost(post) {
+  const postContainer = document.createElement("div");
+  const postTitle = document.createElement("h1");
+  postTitle.classList = "single-title";
+  postTitle.textContent = post.title;
+  const postMedia = document.createElement("img");
+  postMedia.classList = "single-image";
   if (post.media) {
-    const postContainer = document.createElement("div");
-    const postTitle = document.createElement("h1");
-    postTitle.classList = "single-title";
-    postTitle.textContent = post.title;
-    const postMedia = document.createElement("img");
-    postMedia.classList = "single-image";
     postMedia.src = post.media.url;
     postMedia.alt = post.media.alt;
-
-    const postBody = document.createElement("p");
-    postBody.classList = "single-body";
-    postBody.textContent = post.body;
-
-    postContainer.append(postTitle, postMedia, postBody);
-
-    singlePostContainer.append(postContainer);
   } else {
-    const postContainer = document.createElement("div");
-    const postTitle = document.createElement("h1");
-    postTitle.textContent = post.title;
-
-    const postBody = document.createElement("p");
-    postBody.textContent = post.body;
-
-    postContainer.append(postTitle, postBody);
-
-    singlePostContainer.append(postContainer);
+    postMedia.src = "https://i.imghippo.com/files/AVMh8683c.png";
+    postMedia.alt = "Placeholder image of a dark grey mountain and a sun";
   }
+
+  const postBody = document.createElement("p");
+  postBody.classList = "single-body";
+  postBody.textContent = post.body;
+
+  postContainer.append(postTitle, postMedia, postBody);
+  if (profileName === post.author.name) {
+    const sendToEditButton = document.createElement("button");
+    sendToEditButton.classList = "editButton";
+    sendToEditButton.textContent = "Edit post";
+    sendToEditButton.addEventListener("click", () => {
+      window.location.href = `./edit.html?id=${post.id}`;
+    });
+    postContainer.append(postTitle, postMedia, postBody, sendToEditButton);
+  } else {
+    //postContainer.append(postTitle, postMedia, postBody);
+  }
+  singlePostContainer.append(postContainer);
 }
 async function mainPost() {
   try {
