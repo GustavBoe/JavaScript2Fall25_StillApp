@@ -54,7 +54,7 @@ function onEditFormSubmit(event) {
   };
   postFields.media = media;
   editPost(postFields);
-  window.location.href = "/index.html";
+  window.location.href = "./index.html";
 }
 editForm.addEventListener("submit", onEditFormSubmit);
 try {
