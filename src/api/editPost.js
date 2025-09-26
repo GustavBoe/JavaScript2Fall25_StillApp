@@ -7,7 +7,6 @@ import {
   editFormUrl,
   editFormBody,
   deleteButton,
-  editSubmitButton,
 } from "../utils/const.js";
 import { fetchSinglePost } from "../api/apiClient.js";
 import { getFromLocalStorage } from "..//utils/storage.js";

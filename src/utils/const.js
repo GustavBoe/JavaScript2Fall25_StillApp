@@ -35,7 +35,7 @@ export const profileName = getFromLocalStorage("profileName");
 
 //editPost.js
 export const EDIT_URL = `${POSTS_URL}/${PARAMETER_ID}`;
-export const editSubmitButton = document.getElementById("edit");
+
 export const editForm = document.querySelector("#edit-form");
 export const editFormTitle = document.getElementById("title");
 export const editFormBody = document.getElementById("body");
