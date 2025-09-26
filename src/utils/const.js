@@ -1,18 +1,17 @@
 import { getFromLocalStorage } from "./storage.js";
 
 export const BASE_API_URL = "https://v2.api.noroff.dev";
-export const POSTS_URL = `${BASE_API_URL}/social/posts`;
+export const POSTS_URL = `${BASE_API_URL}/social/posts?_author=true`;
 export const NOROFF_API_KEY = "98235bd0-6bd9-4268-8607-233ca60225b3";
 export const headId = document.title;
 export const userName = getFromLocalStorage("profileName");
 //authServices.js
 export const AUTH_REGISTER_URL = `${BASE_API_URL}/auth/register`;
-
 export const registerForm = document.querySelector(`#register-form`);
 
 //postsServices.js
-
 export const createForm = document.querySelector("#create-form");
+
 //login.js
 export const AUTH_LOGIN_URL = `${BASE_API_URL}/auth/login`;
 export const loginForm = document.querySelector("#login-form");
@@ -42,3 +41,18 @@ export const editFormBody = document.getElementById("body");
 export const editFormUrl = document.getElementById("url");
 export const editFormAlt = document.getElementById("alt");
 export const deleteButton = document.getElementById("delete-button");
+
+//profile.js
+export const PROFILE_URL = `${BASE_API_URL}/social/profiles/${profileName}`;
+export const PROFILE_POSTS_URL = `${PROFILE_URL}_posts=true`;
+export const profileContainer = document.getElementById("profile-container");
+
+//Placeholders
+export const loggedOutText = `
+    <h1>Still</h1>
+      <p>Get started at Still!</p>
+      <div class="index-button-container">
+        <button id="login-button">Log in</button>
+        <p>Or</p>
+        <button id="register-button">Create new profile</button>
+      </div>`;

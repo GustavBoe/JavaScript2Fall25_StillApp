@@ -1,19 +1,10 @@
 //This file will render a specific post//
-import {
-  NOROFF_API_KEY,
-  headId,
-  singlePostContainer,
-  SINGLE_URL,
-  profileName,
-  urlParams,
-  PARAMETER_ID,
-  queryString,
-  POSTS_URL,
-} from "../utils/const.js";
+import { singlePostContainer, profileName } from "../utils/const.js";
 
 import { fetchSinglePost } from "..//api/apiClient.js";
 
 async function generateSinglePost(post) {
+  console.log(post);
   const postContainer = document.createElement("div");
   const postTitle = document.createElement("h1");
   postTitle.classList = "single-title";
@@ -32,25 +23,23 @@ async function generateSinglePost(post) {
   postBody.classList = "single-body";
   postBody.textContent = post.body;
   postContainer.append(postTitle, postMedia, postBody);
-  if (profileName === post.author.name) {
+  /**if (profileName === post.author.name) {
     const sendToEditButton = document.createElement("button");
     sendToEditButton.classList = "editButton";
     sendToEditButton.textContent = "Edit post";
     sendToEditButton.addEventListener("click", () => {
       window.location.href = `./edit.html?id=${post.id}`;
     });
-    postContainer.append(postTitle, postMedia, postBody, sendToEditButton);
-  }
+    postContainer.append(sendToEditButton);
+  }**/
   singlePostContainer.append(postContainer);
 }
 async function mainPost() {
-  if (headId === "Still | Post") {
-    try {
-      const post = await fetchSinglePost();
-      generateSinglePost(post);
-    } catch (error) {
-      alert(error, "Something went wrong, please return to homepage");
-    }
+  try {
+    const post = await fetchSinglePost();
+    generateSinglePost(post);
+  } catch (error) {
+    alert(error, "Something went wrong, please return to homepage");
   }
 }
 

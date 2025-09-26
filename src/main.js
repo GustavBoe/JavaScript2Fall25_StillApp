@@ -1,6 +1,11 @@
 import { getFromLocalStorage } from "./utils/storage.js";
 
-import { POSTS_URL, NOROFF_API_KEY, displayContainer } from "./utils/const.js";
+import {
+  POSTS_URL,
+  NOROFF_API_KEY,
+  displayContainer,
+  loggedOutText,
+} from "./utils/const.js";
 
 async function fetchPosts() {
   try {
@@ -13,13 +18,26 @@ async function fetchPosts() {
     };
     const response = await fetch(POSTS_URL, fetchOptions);
     const json = await response.json();
+
     return json.data;
   } catch (error) {
     console.log(error);
   }
 }
+
 export async function generatePosts(posts) {
   for (let i = 0; i < posts.length; i++) {
+    const userContainer = document.createElement("div");
+    userContainer.classList = "user-container-feed";
+
+    const profilePic = document.createElement("img");
+    profilePic.src = posts[i].author.avatar.url;
+    profilePic.classList = "profile-pic-feed";
+
+    const profileUsername = document.createElement("p");
+    profileUsername.textContent = posts[i].author.name;
+    profileUsername.classList = "profile-username-feed";
+
     const postContainer = document.createElement("a");
     postContainer.setAttribute("href", `./post.html?id=${posts[i].id}`);
 
@@ -35,23 +53,16 @@ export async function generatePosts(posts) {
 
     const postBody = document.createElement("p");
     postBody.textContent = posts[i].body;
-
+    userContainer.append(profilePic, profileUsername);
     postContainer.append(postTitle, postImage, postBody);
 
-    displayContainer.append(postContainer);
+    displayContainer.append(userContainer, postContainer);
   }
 }
 
 async function main() {
   if (!localStorage.getItem("accessToken")) {
-    displayContainer.innerHTML = `
-    <h1>Still</h1>
-      <p>Get started at Still!</p>
-      <div class="index-button-container">
-        <button id="login-button">Log in</button>
-        <p>Or</p>
-        <button id="register-button">Create new profile</button>
-      </div>`;
+    displayContainer.innerHTML = loggedOutText;
     const loginButton = document.getElementById("login-button");
     const registerButton = document.getElementById("register-button");
     loginButton.addEventListener("click", onClickLogInButton);
