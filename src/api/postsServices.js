@@ -33,8 +33,10 @@ function onCreateFormSubmit(event) {
   };
 
   postFields.media = media;
-  postFields.author = author;
+
   createPost(postFields);
+  alert("You created a post!");
+  window.location.href = "./index.html";
 }
 
 createForm.addEventListener("submit", onCreateFormSubmit);
