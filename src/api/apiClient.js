@@ -18,6 +18,7 @@ export async function fetchSinglePost() {
     };
     const response = await fetch(SINGLE_URL, fetchOptions);
     const json = await response.json();
+    console.log(SINGLE_URL);
     return json.data;
   } catch (error) {
     console.log(error);

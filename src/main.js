@@ -1,7 +1,7 @@
 import { getFromLocalStorage } from "./utils/storage.js";
 
 import {
-  POSTS_URL,
+  FEED_POSTS_URL,
   NOROFF_API_KEY,
   displayContainer,
   loggedOutText,
@@ -16,7 +16,7 @@ async function fetchPosts() {
         "X-Noroff-API-Key": NOROFF_API_KEY,
       },
     };
-    const response = await fetch(POSTS_URL, fetchOptions);
+    const response = await fetch(FEED_POSTS_URL, fetchOptions);
     const json = await response.json();
 
     return json.data;
@@ -27,9 +27,12 @@ async function fetchPosts() {
 
 export async function generatePosts(posts) {
   for (let i = 0; i < posts.length; i++) {
-    const userContainer = document.createElement("div");
+    const userContainer = document.createElement("a");
     userContainer.classList = "user-container-feed";
-
+    userContainer.setAttribute(
+      "href",
+      `./profile.html?name=${posts[i].author.name}`
+    );
     const profilePic = document.createElement("img");
     profilePic.src = posts[i].author.avatar.url;
     profilePic.classList = "profile-pic-feed";
@@ -73,7 +76,7 @@ async function main() {
       generatePosts(posts);
     } catch (error) {
       console.log(error);
-      alert("Something wnt wrong, please return later!");
+      alert("Something went wrong, please return later!");
     }
   }
 }

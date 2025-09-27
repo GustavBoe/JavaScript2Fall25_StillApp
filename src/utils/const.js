@@ -1,7 +1,8 @@
 import { getFromLocalStorage } from "./storage.js";
 
 export const BASE_API_URL = "https://v2.api.noroff.dev";
-export const POSTS_URL = `${BASE_API_URL}/social/posts?_author=true`;
+export const POSTS_URL = `${BASE_API_URL}/social/posts`;
+export const FEED_POSTS_URL = `${POSTS_URL}?_author=true`;
 export const NOROFF_API_KEY = "98235bd0-6bd9-4268-8607-233ca60225b3";
 export const headId = document.title;
 export const userName = getFromLocalStorage("profileName");
@@ -43,10 +44,15 @@ export const editFormAlt = document.getElementById("alt");
 export const deleteButton = document.getElementById("delete-button");
 
 //profile.js
-export const PROFILE_URL = `${BASE_API_URL}/social/profiles/${profileName}`;
-export const PROFILE_POSTS_URL = `${PROFILE_URL}_posts=true`;
+export const profileQueryString = window.location.search;
+export const profileUrlParams = new URLSearchParams(queryString);
+export const PROFILE_PARAMETER_NAME = urlParams.get("name");
+export const PROFILE_URL = `${BASE_API_URL}/social/profiles/${PROFILE_PARAMETER_NAME}`;
+export const PROFILE_POSTS_URL = `${PROFILE_URL}?_posts=true`;
 export const profileContainer = document.getElementById("profile-container");
-
+export const profilePostsContainer = document.getElementById(
+  "profile-posts-container"
+);
 //Placeholders
 export const loggedOutText = `
     <h1>Still</h1>

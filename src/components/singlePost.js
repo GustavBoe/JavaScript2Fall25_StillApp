@@ -4,7 +4,6 @@ import { singlePostContainer, profileName } from "../utils/const.js";
 import { fetchSinglePost } from "..//api/apiClient.js";
 
 async function generateSinglePost(post) {
-  console.log(post);
   const postContainer = document.createElement("div");
   const postTitle = document.createElement("h1");
   postTitle.classList = "single-title";
@@ -23,7 +22,7 @@ async function generateSinglePost(post) {
   postBody.classList = "single-body";
   postBody.textContent = post.body;
   postContainer.append(postTitle, postMedia, postBody);
-  /**if (profileName === post.author.name) {
+  if (profileName === post.author.name) {
     const sendToEditButton = document.createElement("button");
     sendToEditButton.classList = "editButton";
     sendToEditButton.textContent = "Edit post";
@@ -31,7 +30,7 @@ async function generateSinglePost(post) {
       window.location.href = `./edit.html?id=${post.id}`;
     });
     postContainer.append(sendToEditButton);
-  }**/
+  }
   singlePostContainer.append(postContainer);
 }
 async function mainPost() {
