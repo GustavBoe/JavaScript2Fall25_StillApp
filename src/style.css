@@ -1,5 +1,42 @@
+body a {
+  text-decoration: none;
+  color: black;
+}
+
+.header-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: min-content;
+  margin: 0%;
+}
+
+.header-button {
+  height: 2rem;
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+}
+/** Index.html**/
+.user-container-feed {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 5rem;
+}
 .profile-pic-feed {
-  border-radius: 25%;
-  width: 1rem;
+  border-radius: 50%;
+  width: 3rem;
   height: auto;
+  margin-right: 1rem;
+}
+.post-container-feed {
+  align-self: center;
+  text-align: center;
+}
+.post-image-feed {
+  width: 20rem;
+  display: block;
+  margin: 0 auto;
 }

@@ -44,11 +44,13 @@ export async function generatePosts(posts) {
 
     const postContainer = document.createElement("a");
     postContainer.setAttribute("href", `./post.html?id=${posts[i].id}`);
+    postContainer.classList = "post-container-feed";
 
     const postTitle = document.createElement("h2");
     postTitle.textContent = posts[i].title;
+    postTitle.classList = "post-title-feed";
     const postImage = document.createElement("img");
-    postImage.classList = "feedImage";
+    postImage.classList = "post-image-feed";
     if (posts[i].media) {
       postImage.src = posts[i].media.url;
     } else {
@@ -57,6 +59,7 @@ export async function generatePosts(posts) {
 
     const postBody = document.createElement("p");
     postBody.textContent = posts[i].body;
+    postBody.classList = "post-body-feed";
     userContainer.append(profilePic, profileUsername);
     postContainer.append(postTitle, postImage, postBody);
 
