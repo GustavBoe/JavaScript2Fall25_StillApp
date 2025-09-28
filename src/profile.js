@@ -4,9 +4,14 @@ import {
   profileContainer,
   profilePostsContainer,
 } from "./utils/const.js";
-import { fetchUsersPosts, followUser, unfollowUser } from "./api/apiClient.js";
+import {
+  fetchUsersPosts,
+  fetchFollowing,
+  followUser,
+  unfollowUser,
+} from "./api/apiClient.js";
 import { createHeader } from "./components/headerFooterLoader.js";
-
+fetchFollowing();
 async function renderProfile(profile) {
   const profilePageBanner = document.createElement("img");
   profilePageBanner.src = profile.banner.url;

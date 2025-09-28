@@ -15,9 +15,10 @@ async function loginUser(userDetails) {
     };
     const response = await fetch(AUTH_LOGIN_URL, fetchOptions);
     const json = await response.json();
-    console.log(json);
+
     const accessToken = json.data.accessToken;
     const profileName = json.data.name;
+
     addToLocalStorage("accessToken", accessToken);
     addToLocalStorage("profileName", profileName);
   } catch (error) {

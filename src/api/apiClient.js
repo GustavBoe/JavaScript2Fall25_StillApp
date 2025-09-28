@@ -7,6 +7,7 @@ import {
   PROFILE_POSTS_URL,
   FOLLOW_PROFILE_URL,
   UNFOLLOW_PROFILE_URL,
+  LOGGEDIN_PROFILE_URL,
 } from "..//utils/const.js";
 
 export async function fetchSinglePost() {
@@ -44,7 +45,7 @@ export async function fetchUser() {
     console.log(error);
   }
 }
-export async function addFollowingToLocal() {
+export async function fetchFollowing() {
   try {
     const accessToken = getFromLocalStorage("accessToken");
     const fetchOptions = {
@@ -57,7 +58,6 @@ export async function addFollowingToLocal() {
     const json = await response.json();
     const following = json.data.following;
     addToLocalStorage("following", following);
-    return json.data;
   } catch (error) {
     window.location.href = "./index.html";
     console.log(error);
