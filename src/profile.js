@@ -3,6 +3,8 @@ import {
   loggedOutText,
   profileContainer,
   profilePostsContainer,
+  following,
+  profileName,
 } from "./utils/const.js";
 import {
   fetchUsersPosts,
@@ -27,22 +29,24 @@ async function renderProfile(profile) {
   const followButton = document.createElement("button");
   followButton.textContent = "Follow";
   followButton.addEventListener("click", followUser);
+
   const unfollowButton = document.createElement("button");
   unfollowButton.textContent = "Unfollow";
   unfollowButton.addEventListener("click", unfollowUser);
-  if (getFromLocalStorage("following".includes(profile.name))) {
+
+  if (profile.name === profileName) {
+    followButton.style.display = "none";
+    unfollowButton.style.display = "none";
+  }
+  if (following.includes(profile.name)) {
     followButton.style.display = "none";
   } else {
     unfollowButton.style.display = "none";
   }
+
   const profilePageBio = document.createElement("p");
   profilePageBio.textContent = profile.bio;
 
-  if (profile.following === undefined) {
-    console.log("Doesnt follow anybody");
-  } else {
-    console.log(profile.following);
-  }
   profileContainer.append(
     profilePageBanner,
     profilePageImage,
@@ -52,6 +56,7 @@ async function renderProfile(profile) {
     profilePageBio
   );
 }
+
 async function renderPosts(posts) {
   for (let i = posts.length - 1; i >= 0; i--) {
     const postContainer = document.createElement("a");

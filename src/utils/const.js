@@ -53,7 +53,7 @@ export const PROFILE_URL = `${BASE_API_URL}/social/profiles/${PROFILE_PARAMETER_
 export const LOGGEDIN_PROFILE_URL = `${BASE_API_URL}/social/profiles/${profileName}?_following=true`;
 export const FOLLOW_PROFILE_URL = `${PROFILE_URL}/follow`;
 export const UNFOLLOW_PROFILE_URL = `${PROFILE_URL}/unfollow`;
-
+export const following = getFromLocalStorage("followingNames");
 export const PROFILE_POSTS_URL = `${PROFILE_URL}?_posts=true&_following=true`;
 export const profileContainer = document.getElementById("profile-container");
 export const profilePostsContainer = document.getElementById(

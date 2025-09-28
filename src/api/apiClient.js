@@ -57,7 +57,9 @@ export async function fetchFollowing() {
     const response = await fetch(LOGGEDIN_PROFILE_URL, fetchOptions);
     const json = await response.json();
     const following = json.data.following;
-    addToLocalStorage("following", following);
+    const followingNames = following.map((follow) => follow.name);
+    addToLocalStorage("followingNames", followingNames);
+    console.log(followingNames);
   } catch (error) {
     window.location.href = "./index.html";
     console.log(error);
@@ -91,8 +93,9 @@ export async function followUser() {
       },
     };
     const response = await fetch(FOLLOW_PROFILE_URL, fetchOptions);
-    const json = response.json();
-    return json;
+    if (response.ok) {
+      location.reload();
+    }
   } catch (error) {
     alert("Could not follow user, please return to homepage");
     console.log(error[0].message);
@@ -109,8 +112,9 @@ export async function unfollowUser() {
       },
     };
     const response = await fetch(UNFOLLOW_PROFILE_URL, fetchOptions);
-    const json = response.json();
-    return json;
+    if (response.ok) {
+      location.reload();
+    }
   } catch (error) {
     alert("Could not follow user, please return to homepage");
     console.log(error[0].message);
