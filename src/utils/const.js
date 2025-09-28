@@ -5,6 +5,7 @@ export const POSTS_URL = `${BASE_API_URL}/social/posts`;
 export const FEED_POSTS_URL = `${POSTS_URL}?_author=true`;
 export const NOROFF_API_KEY = "98235bd0-6bd9-4268-8607-233ca60225b3";
 export const headId = document.title;
+export const pageHeader = document.getElementById("desktop-header");
 export const userName = getFromLocalStorage("profileName");
 //authServices.js
 export const AUTH_REGISTER_URL = `${BASE_API_URL}/auth/register`;
@@ -48,6 +49,7 @@ export const profileQueryString = window.location.search;
 export const profileUrlParams = new URLSearchParams(queryString);
 export const PROFILE_PARAMETER_NAME = urlParams.get("name");
 export const PROFILE_URL = `${BASE_API_URL}/social/profiles/${PROFILE_PARAMETER_NAME}`;
+
 export const PROFILE_POSTS_URL = `${PROFILE_URL}?_posts=true`;
 export const profileContainer = document.getElementById("profile-container");
 export const profilePostsContainer = document.getElementById(
@@ -55,7 +57,7 @@ export const profilePostsContainer = document.getElementById(
 );
 //Placeholders
 export const loggedOutText = `
-    <h1>Still</h1>
+    
       <p>Get started at Still!</p>
       <div class="index-button-container">
         <button id="login-button">Log in</button>

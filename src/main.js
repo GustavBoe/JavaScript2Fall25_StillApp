@@ -6,6 +6,7 @@ import {
   displayContainer,
   loggedOutText,
 } from "./utils/const.js";
+import { createHeader } from "./components/headerFooterLoader.js";
 
 async function fetchPosts() {
   try {
@@ -64,6 +65,7 @@ export async function generatePosts(posts) {
 }
 
 async function main() {
+  createHeader();
   if (!localStorage.getItem("accessToken")) {
     displayContainer.innerHTML = loggedOutText;
     const loginButton = document.getElementById("login-button");

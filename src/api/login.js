@@ -1,5 +1,11 @@
-import { addToLocalStorage } from "..//utils/storage.js";
-import { AUTH_LOGIN_URL, loginForm, logoutButton } from "..//utils/const.js";
+import { addToLocalStorage, logOut } from "..//utils/storage.js";
+import {
+  AUTH_LOGIN_URL,
+  loginForm,
+  loginFormButton,
+  logoutButton,
+  profileName,
+} from "..//utils/const.js";
 
 async function loginUser(userDetails) {
   try {
@@ -21,16 +27,14 @@ async function loginUser(userDetails) {
     console.log(error);
   }
 }
-function onLoginFormSubmit(event) {
+async function onLoginFormSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
   const formFields = Object.fromEntries(formData);
-  loginUser(formFields);
-}
-function logOut() {
-  localStorage.clear();
-  alert("Logged out! Sending you home");
+  await loginUser(formFields);
   window.location.href = "./index.html";
 }
+
 loginForm.addEventListener("submit", onLoginFormSubmit);
+
 logoutButton.addEventListener("click", logOut);
