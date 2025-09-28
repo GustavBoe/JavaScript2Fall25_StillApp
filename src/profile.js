@@ -26,12 +26,16 @@ async function renderProfile(profile) {
 
   const profilePageUsername = document.createElement("h2");
   profilePageUsername.textContent = profile.name;
+  profilePageUsername.classList = "profile-page-name";
+
   const followButton = document.createElement("button");
   followButton.textContent = "Follow";
+  followButton.classList = "follow-button";
   followButton.addEventListener("click", followUser);
 
   const unfollowButton = document.createElement("button");
   unfollowButton.textContent = "Unfollow";
+  unfollowButton.classList = "unfollow-button";
   unfollowButton.addEventListener("click", unfollowUser);
 
   if (profile.name === profileName) {
@@ -68,10 +72,8 @@ async function renderPosts(posts) {
       profilePostImage.src = "https://i.imghippo.com/files/AVMh8683c.png";
     }
     profilePostImage.classList = "profile-post-image";
-    const profilePostTitle = document.createElement("p");
-    profilePostTitle.textContent = posts[i].title;
-    profilePostTitle.classList = "profile-post-title";
-    postContainer.append(profilePostImage, profilePostTitle);
+
+    postContainer.append(profilePostImage);
     profilePostsContainer.append(postContainer);
   }
 }
@@ -88,6 +90,7 @@ async function mainProfile() {
     alert("Something went wrong", error);
   }
 }
+
 if (!getFromLocalStorage("accessToken")) {
   profileContainer.innerHTML = loggedOutText;
 } else {

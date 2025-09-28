@@ -6,9 +6,11 @@ import { createHeader } from "./headerFooterLoader.js";
 
 async function generateSinglePost(post) {
   const postContainer = document.createElement("div");
+  postContainer.classList = "post-container";
   const postTitle = document.createElement("h1");
   postTitle.classList = "single-title";
   postTitle.textContent = post.title;
+
   const postMedia = document.createElement("img");
   postMedia.classList = "single-image";
   if (post.media) {
@@ -25,7 +27,7 @@ async function generateSinglePost(post) {
   postContainer.append(postTitle, postMedia, postBody);
   if (profileName === post.author.name) {
     const sendToEditButton = document.createElement("button");
-    sendToEditButton.classList = "editButton";
+    sendToEditButton.classList = "edit-button";
     sendToEditButton.textContent = "Edit post";
     sendToEditButton.addEventListener("click", () => {
       window.location.href = `./edit.html?id=${post.id}`;

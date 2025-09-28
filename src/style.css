@@ -12,7 +12,10 @@ body a {
   margin: 0%;
 }
 
-.header-button {
+.header-button,
+.follow-button,
+.unfollow-button,
+.edit-button {
   height: 2rem;
   background-color: white;
   border-color: black;
@@ -25,7 +28,8 @@ body a {
   width: 100%;
   margin-top: 5rem;
 }
-.profile-pic-feed {
+.profile-pic-feed,
+.profile-page-image {
   border-radius: 50%;
   width: 3rem;
   height: auto;
@@ -35,8 +39,48 @@ body a {
   align-self: center;
   text-align: center;
 }
-.post-image-feed {
+.post-image-feed,
+.profile-page-image {
   width: 20rem;
   display: block;
   margin: 0 auto;
+}
+
+/**Profile.html**/
+#profile-container {
+  text-align: center;
+}
+.profile-page-banner {
+  width: 100%;
+}
+.profile-page-image {
+  width: 10rem;
+  margin-top: 3rem;
+}
+#profile-posts-container {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.profile-post-image {
+  max-width: 10rem;
+  aspect-ratio: 1/1;
+}
+
+/*post.html*/
+.post-container {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  text-align: center;
+}
+.single-image {
+  max-width: 20rem;
+}
+.single-body {
+  max-width: 60%;
 }
