@@ -59,7 +59,6 @@ export async function fetchFollowing() {
     const following = json.data.following;
     const followingNames = following.map((follow) => follow.name);
     addToLocalStorage("followingNames", followingNames);
-    console.log(followingNames);
   } catch (error) {
     window.location.href = "./index.html";
     console.log(error);

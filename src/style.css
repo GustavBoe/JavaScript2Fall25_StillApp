@@ -34,9 +34,10 @@ body a {
 .user-container-feed {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 20%;
   margin-top: 5rem;
 }
+
 .profile-pic-feed,
 .profile-page-image {
   border-radius: 50%;
@@ -123,4 +124,14 @@ body a {
 /**/
 .placeholder-container {
   margin-top: 5rem;
+}
+
+@media (width>610px) {
+  .user-container-feed {
+    justify-self: center;
+    width: 40%;
+  }
+  #profile-posts-container {
+    grid-template-columns: auto auto auto;
+  }
 }
