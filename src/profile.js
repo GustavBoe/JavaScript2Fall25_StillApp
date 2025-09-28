@@ -4,7 +4,7 @@ import {
   profileContainer,
   profilePostsContainer,
 } from "./utils/const.js";
-import { fetchUsersPosts } from "./api/apiClient.js";
+import { fetchUsersPosts, followUser, unfollowUser } from "./api/apiClient.js";
 import { createHeader } from "./components/headerFooterLoader.js";
 
 async function renderProfile(profile) {
@@ -19,16 +19,31 @@ async function renderProfile(profile) {
 
   const profilePageUsername = document.createElement("h2");
   profilePageUsername.textContent = profile.name;
-
+  const followButton = document.createElement("button");
+  followButton.textContent = "Follow";
+  followButton.addEventListener("click", followUser);
+  const unfollowButton = document.createElement("button");
+  unfollowButton.textContent = "Unfollow";
+  unfollowButton.addEventListener("click", unfollowUser);
+  if (getFromLocalStorage("following".includes(profile.name))) {
+    followButton.style.display = "none";
+  } else {
+    unfollowButton.style.display = "none";
+  }
   const profilePageBio = document.createElement("p");
   profilePageBio.textContent = profile.bio;
 
-  console.log(profile);
-
+  if (profile.following === undefined) {
+    console.log("Doesnt follow anybody");
+  } else {
+    console.log(profile.following);
+  }
   profileContainer.append(
     profilePageBanner,
     profilePageImage,
     profilePageUsername,
+    followButton,
+    unfollowButton,
     profilePageBio
   );
 }

@@ -7,6 +7,7 @@ import {
   loggedOutText,
 } from "./utils/const.js";
 import { createHeader } from "./components/headerFooterLoader.js";
+import { addFollowingToLocal } from "./api/apiClient.js";
 
 async function fetchPosts() {
   try {
@@ -76,6 +77,7 @@ async function main() {
     try {
       const posts = await fetchPosts();
       generatePosts(posts);
+      await addFollowingToLocal();
     } catch (error) {
       console.log(error);
       alert("Something went wrong, please return later!");

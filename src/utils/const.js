@@ -48,9 +48,13 @@ export const deleteButton = document.getElementById("delete-button");
 export const profileQueryString = window.location.search;
 export const profileUrlParams = new URLSearchParams(queryString);
 export const PROFILE_PARAMETER_NAME = urlParams.get("name");
-export const PROFILE_URL = `${BASE_API_URL}/social/profiles/${PROFILE_PARAMETER_NAME}`;
 
-export const PROFILE_POSTS_URL = `${PROFILE_URL}?_posts=true`;
+export const PROFILE_URL = `${BASE_API_URL}/social/profiles/${PROFILE_PARAMETER_NAME}`;
+export const LOGGEDIN_PROFILE_URL = `${BASE_API_URL}/social/profiles/${profileName}?_following=true`;
+export const FOLLOW_PROFILE_URL = `${PROFILE_URL}/follow`;
+export const UNFOLLOW_PROFILE_URL = `${PROFILE_URL}/unfollow`;
+
+export const PROFILE_POSTS_URL = `${PROFILE_URL}?_posts=true&_following=true`;
 export const profileContainer = document.getElementById("profile-container");
 export const profilePostsContainer = document.getElementById(
   "profile-posts-container"

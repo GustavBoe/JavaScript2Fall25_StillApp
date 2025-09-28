@@ -1,6 +1,7 @@
 import { addToLocalStorage, logOut } from "..//utils/storage.js";
 import { AUTH_LOGIN_URL, loginForm, logoutButton } from "..//utils/const.js";
 import { createHeader } from "../components/headerFooterLoader.js";
+import { addFollowingToLocal } from "./apiClient.js";
 
 createHeader();
 async function loginUser(userDetails) {
@@ -28,6 +29,7 @@ async function onLoginFormSubmit(event) {
   const formData = new FormData(event.target);
   const formFields = Object.fromEntries(formData);
   await loginUser(formFields);
+
   window.location.href = "./index.html";
 }
 
