@@ -61,10 +61,11 @@ export const profilePostsContainer = document.getElementById(
 );
 //Placeholders
 export const loggedOutText = `
-    
-      <p>Get started at Still!</p>
+      <div class="placeholder-container">
+      <p class="tsukimi-rounded-regular" >Get started at Still!</p>
       <div class="index-button-container">
-        <button id="login-button">Log in</button>
+        <button class="login-button" id="login-button">Log in</button>
         <p>Or</p>
-        <button id="register-button">Create new profile</button>
+        <button class="register-button" id="register-button">Create new profile</button>
+      </div>
       </div>`;

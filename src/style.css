@@ -21,7 +21,10 @@ body a {
 .unfollow-button,
 .edit-button,
 .create-button,
-#delete-button {
+#delete-button,
+.login-button,
+.register-button,
+.register-form-button {
   height: 2rem;
   background-color: white;
   border-color: black;
@@ -79,7 +82,10 @@ body a {
 /*post.html*/
 .post-container,
 #create-form,
-#edit-form {
+#edit-form,
+.placeholder-container,
+#register-form,
+#login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,11 +99,12 @@ body a {
 }
 /*create.html & edit.html*/
 .create-heading,
-.edit-heading {
+.edit-heading,
+.register-heading {
   text-align: center;
 }
 #create-form,
-#edit-form label {
+#edit-form {
   text-align: left;
 }
 .create-title,
@@ -108,6 +115,12 @@ body a {
 }
 .create-button,
 .edit-button,
-#delete-button {
+#delete-button,
+.register-form-button {
   margin-top: 2rem;
+}
+
+/**/
+.placeholder-container {
+  margin-top: 5rem;
 }

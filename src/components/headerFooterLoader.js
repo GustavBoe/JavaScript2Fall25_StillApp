@@ -8,6 +8,9 @@ export function createHeader() {
   const headerLogo = document.createElement("h1");
   headerLogo.textContent = "Still";
   headerLogo.classList = "header-logo tsukimi-rounded-regular";
+  headerLogo.addEventListener("click", () => {
+    location.href = "./index.html";
+  });
 
   const globalLink = document.createElement("a");
   globalLink.setAttribute("href", "./index.html");
