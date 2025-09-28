@@ -1,12 +1,8 @@
 import { addToLocalStorage, logOut } from "..//utils/storage.js";
-import {
-  AUTH_LOGIN_URL,
-  loginForm,
-  loginFormButton,
-  logoutButton,
-  profileName,
-} from "..//utils/const.js";
+import { AUTH_LOGIN_URL, loginForm, logoutButton } from "..//utils/const.js";
+import { createHeader } from "../components/headerFooterLoader.js";
 
+createHeader();
 async function loginUser(userDetails) {
   try {
     const fetchOptions = {

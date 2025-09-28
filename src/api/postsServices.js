@@ -1,6 +1,9 @@
 //This file will handle the different functions needed for authorizing a users actions//
 import { POSTS_URL, createForm, NOROFF_API_KEY } from "../utils/const.js";
 import { getFromLocalStorage } from "../utils/storage.js";
+import { createHeader } from "../components/headerFooterLoader.js";
+
+createHeader();
 async function createPost(postDetails) {
   try {
     const accessToken = getFromLocalStorage("accessToken");
@@ -14,13 +17,12 @@ async function createPost(postDetails) {
       },
     };
     const response = await fetch(POSTS_URL, fetchOptions);
-    console.log(response);
   } catch (error) {
     console.log(error);
   }
 }
 
-function onCreateFormSubmit(event) {
+async function onCreateFormSubmit(event) {
   event.preventDefault();
 
   const formData = new FormData(event.target);
@@ -34,7 +36,7 @@ function onCreateFormSubmit(event) {
 
   postFields.media = media;
 
-  createPost(postFields);
+  await createPost(postFields);
   alert("You created a post!");
   window.location.href = "./index.html";
 }

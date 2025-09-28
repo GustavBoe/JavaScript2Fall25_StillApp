@@ -2,6 +2,7 @@
 import { singlePostContainer, profileName } from "../utils/const.js";
 
 import { fetchSinglePost } from "..//api/apiClient.js";
+import { createHeader } from "./headerFooterLoader.js";
 
 async function generateSinglePost(post) {
   const postContainer = document.createElement("div");
@@ -34,6 +35,7 @@ async function generateSinglePost(post) {
   singlePostContainer.append(postContainer);
 }
 async function mainPost() {
+  createHeader();
   try {
     const post = await fetchSinglePost();
     generateSinglePost(post);

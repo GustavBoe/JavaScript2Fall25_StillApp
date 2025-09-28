@@ -5,6 +5,7 @@ import {
   profilePostsContainer,
 } from "./utils/const.js";
 import { fetchUsersPosts } from "./api/apiClient.js";
+import { createHeader } from "./components/headerFooterLoader.js";
 
 async function renderProfile(profile) {
   const profilePageBanner = document.createElement("img");
@@ -51,6 +52,7 @@ async function renderPosts(posts) {
 }
 
 async function mainProfile() {
+  createHeader();
   try {
     const profile = await fetchUsersPosts();
     const posts = profile.posts;

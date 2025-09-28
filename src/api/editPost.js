@@ -10,7 +10,8 @@ import {
 } from "../utils/const.js";
 import { fetchSinglePost } from "../api/apiClient.js";
 import { getFromLocalStorage } from "..//utils/storage.js";
-
+import { createHeader } from "../components/headerFooterLoader.js";
+createHeader();
 try {
   const post = await fetchSinglePost();
   renderEditedPost(post);
@@ -99,10 +100,3 @@ deleteButton.addEventListener("click", () => {
     location.reload();
   }
 });
-try {
-  const post = await fetchSinglePost();
-  renderEditedPost(post);
-} catch (error) {
-  alert(error);
-  console.log(error);
-}

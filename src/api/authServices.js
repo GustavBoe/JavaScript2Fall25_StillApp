@@ -1,7 +1,8 @@
 //This file will handle the different functions needed for authorizing a user//
 
+import { createHeader } from "../components/headerFooterLoader.js";
 import { AUTH_REGISTER_URL, registerForm } from "../utils/const.js";
-
+createHeader();
 async function registerUser(userDetails) {
   try {
     const fetchOptions = {
