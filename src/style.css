@@ -2,7 +2,11 @@ body a {
   text-decoration: none;
   color: black;
 }
-
+.tsukimi-rounded-regular {
+  font-family: "Tsukimi Rounded", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 .header-navigation {
   display: flex;
   flex-direction: row;
@@ -15,7 +19,9 @@ body a {
 .header-button,
 .follow-button,
 .unfollow-button,
-.edit-button {
+.edit-button,
+.create-button,
+#delete-button {
   height: 2rem;
   background-color: white;
   border-color: black;
@@ -71,10 +77,11 @@ body a {
 }
 
 /*post.html*/
-.post-container {
+.post-container,
+#create-form,
+#edit-form {
   display: flex;
   flex-direction: column;
-
   align-items: center;
   text-align: center;
 }
@@ -83,4 +90,24 @@ body a {
 }
 .single-body {
   max-width: 60%;
+}
+/*create.html & edit.html*/
+.create-heading,
+.edit-heading {
+  text-align: center;
+}
+#create-form,
+#edit-form label {
+  text-align: left;
+}
+.create-title,
+.create-url,
+.edit-title,
+.edit-url {
+  margin-bottom: 1.5rem;
+}
+.create-button,
+.edit-button,
+#delete-button {
+  margin-top: 2rem;
 }

@@ -19,20 +19,21 @@
   </head>
   <body>
     <header id="desktop-header" class="desktop-header"></header>
-    <h1>Create a post</h1>
+    <h1 class="create-heading tsukimi-rounded-regular">Create a post</h1>
     <form id="create-form">
       <label for="title">Title*</label>
-      <input name="title" id="title" required />
+      <input name="title" id="title" required class="create-title" />
       <label for="url">Image URL</label>
-      <input type="url" name="url" id="url" />
+      <input type="url" name="url" id="url" class="create-url" />
       <textarea
         name="body"
         id="body"
         cols="25"
         rows="5"
         placeholder="Caption your Still photo"
+        class="create-textarea"
       ></textarea>
-      <button>Create post</button>
+      <button class="create-button">Create post</button>
     </form>
   </body>
 </html>

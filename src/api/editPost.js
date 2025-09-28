@@ -22,9 +22,14 @@ try {
 
 async function renderEditedPost(post) {
   editFormTitle.value = post.title;
-  editFormUrl.value = post.media.url;
   editFormBody.value = post.body;
+  if (post.media) {
+    editFormUrl.value = post.media.url;
+  } else {
+    editFormUrl.value = "https://i.imghippo.com/files/AVMh8683c.png";
+  }
 }
+
 async function editPost(postDetails) {
   try {
     const accessToken = getFromLocalStorage("accessToken");
