@@ -82,6 +82,9 @@ export async function fetchUsersPosts() {
     console.log(error);
   }
 }
+/**
+ * Adds the viewed profile to the users _following tag
+ * */
 export async function followUser() {
   try {
     const accessToken = getFromLocalStorage("accessToken");

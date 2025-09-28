@@ -3,6 +3,10 @@
 import { createHeader } from "../components/headerFooterLoader.js";
 import { AUTH_REGISTER_URL, registerForm } from "../utils/const.js";
 createHeader();
+/**
+ * Creates a new account using the data from the user
+ * @param {FormData} userDetails - The data that gets added to the body of the POST request.
+ */
 async function registerUser(userDetails) {
   try {
     const fetchOptions = {
