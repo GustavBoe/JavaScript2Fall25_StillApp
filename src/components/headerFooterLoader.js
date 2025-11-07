@@ -8,8 +8,14 @@ export function createHeader() {
   const pageHeaderNav = document.getElementById("header-nav");
 
   if (!userName) {
-    pageHeaderNav.innerHTML = `
-    <h1>Still</h1>`;
+    pageHeaderNav.innerHTML = `<div class="container-fluid">
+          <a
+            class="navbar-brand tsukimi-rounded-regular --bs-body-bg"
+            href="./index.html"
+            >Still</a
+          >
+         <a href= "./login.html">Log in</a>
+          </div>`;
   } else {
     pageHeaderNav.innerHTML = `
    <div class="container-fluid">
@@ -41,11 +47,12 @@ export function createHeader() {
                 <a class="nav-link" href="./create.html">Create</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./profile.html/${userName}">Profile</a>
+                <a class="nav-link" href="./profile.html?name=${userName}">Profile</a>
               </li>
               <li class="nav-item"> <button class=btn id="log-out-btn">Log out</button>
             </ul>
           </div>
         </div>`;
+    document.getElementById("log-out-btn").addEventListener("click", logOut);
   }
 }
