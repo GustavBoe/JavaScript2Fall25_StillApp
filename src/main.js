@@ -28,42 +28,29 @@ async function fetchPosts() {
 
 export async function generatePosts(posts) {
   for (let i = 0; i < posts.length; i++) {
-    const userContainer = document.createElement("a");
-    userContainer.classList = "user-container-feed";
-    userContainer.setAttribute(
-      "href",
-      `./profile.html?name=${posts[i].author.name}`
-    );
-    const profilePic = document.createElement("img");
-    profilePic.src = posts[i].author.avatar.url;
-    profilePic.classList = "profile-pic-feed";
-
-    const profileUsername = document.createElement("p");
-    profileUsername.textContent = posts[i].author.name;
-    profileUsername.classList = "profile-username-feed";
-
-    const postContainer = document.createElement("a");
-    postContainer.setAttribute("href", `./post.html?id=${posts[i].id}`);
-    postContainer.classList = "post-container-feed";
-
-    const postTitle = document.createElement("h2");
-    postTitle.textContent = posts[i].title;
-    postTitle.classList = "post-title-feed";
-    const postImage = document.createElement("img");
-    postImage.classList = "post-image-feed";
-    if (posts[i].media) {
-      postImage.src = posts[i].media.url;
+    let postSrc = "";
+    let postAlt = "";
+    if (posts[i].media === null || posts[i].media === undefined) {
+      postSrc = "https://i.imghippo.com/files/AVMh8683c.png";
+      postAlt = "Placeholder: Grey mountains and sun";
     } else {
-      postImage.src = "https://i.imghippo.com/files/AVMh8683c.png";
+      postSrc = posts[i].media.url;
+      postAlt = "A post by" + `${posts[i].author.name}`;
     }
-
-    const postBody = document.createElement("p");
-    postBody.textContent = posts[i].body;
-    postBody.classList = "post-body-feed";
-    userContainer.append(profilePic, profileUsername);
-    postContainer.append(postTitle, postImage, postBody);
-
-    displayContainer.append(userContainer, postContainer);
+    displayContainer.innerHTML = `
+<div>
+<a href= "
+./profile.html?name="${posts[i].author.name}>
+<img src= ${posts[i].author.avatar.url} />
+<p>${posts[i].author.name}</p>
+</a>
+<a href ="./post.html?id=${posts[i].id}">
+<h2>${posts[i].title}</h2>
+<img src=${postSrc} alt=${postAlt} />
+<p>${posts[i].body}</p>
+</a>
+</div>
+`;
   }
 }
 

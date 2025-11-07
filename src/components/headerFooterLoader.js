@@ -14,7 +14,7 @@ export function createHeader() {
             href="./index.html"
             >Still</a
           >
-         <a href= "./login.html">Log in</a>
+         <a class="btn" href= "./login.html">Log in</a>
           </div>`;
   } else {
     pageHeaderNav.innerHTML = `
