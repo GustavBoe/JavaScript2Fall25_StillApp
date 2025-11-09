@@ -18,11 +18,11 @@ async function renderProfile(profile) {
   const profilePageBanner = document.createElement("img");
   profilePageBanner.src = profile.banner.url;
   profilePageBanner.alt = profile.banner.alt;
-  profilePageBanner.classList = "profile-page-banner";
+  profilePageBanner.classList = "img-fluid mt-5";
   const profilePageImage = document.createElement("img");
   profilePageImage.src = profile.avatar.url;
   profilePageImage.alt = profile.avatar.alt;
-  profilePageImage.classList = "profile-page-image";
+  profilePageImage.classList = "rounded-circle w-25 mt-3 ";
 
   const profilePageUsername = document.createElement("h2");
   profilePageUsername.textContent = profile.name;
@@ -30,12 +30,12 @@ async function renderProfile(profile) {
 
   const followButton = document.createElement("button");
   followButton.textContent = "Follow";
-  followButton.classList = "follow-button";
+  followButton.classList = "btn btn-success";
   followButton.addEventListener("click", followUser);
 
   const unfollowButton = document.createElement("button");
   unfollowButton.textContent = "Unfollow";
-  unfollowButton.classList = "unfollow-button";
+  unfollowButton.classList = "btn btn-danger";
   unfollowButton.addEventListener("click", unfollowUser);
 
   if (profile.name === profileName) {
@@ -71,7 +71,7 @@ async function renderPosts(posts) {
     } else {
       profilePostImage.src = "https://i.imghippo.com/files/AVMh8683c.png";
     }
-    profilePostImage.classList = "profile-post-image";
+    profilePostImage.classList = "img-thumbnail";
 
     postContainer.append(profilePostImage);
     profilePostsContainer.append(postContainer);

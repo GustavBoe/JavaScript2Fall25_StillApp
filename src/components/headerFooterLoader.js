@@ -1,10 +1,12 @@
 import { pageHeader, userName, LOGGEDIN_PROFILE_URL } from "../utils/const.js";
 import { logOut } from "../utils/storage.js";
 
+//Header section taken from Noroff css-frameworks module 1
 export function createHeader() {
   const headerNavigation = document.createElement("nav");
   headerNavigation.id = "header-nav";
-  headerNavigation.classList = "navbar navbar-expand-lg navbar-light bg-light ";
+  headerNavigation.classList =
+    "navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between";
   const pageHeaderNav = document.getElementById("header-nav");
 
   if (!userName) {
@@ -14,7 +16,7 @@ export function createHeader() {
             href="./index.html"
             >Still</a
           >
-         <a class="btn" href= "./login.html">Log in</a>
+         <a class="btn btn-outline-dark" href= "./login.html">Log in</a>
           </div>`;
   } else {
     pageHeaderNav.innerHTML = `
@@ -35,21 +37,19 @@ export function createHeader() {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse align-items-center" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link active" href="./index.html">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./index.html">Global</a>
-              </li>
+             
               <li class="nav-item">
                 <a class="nav-link" href="./create.html">Create</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./profile.html?name=${userName}">Profile</a>
               </li>
-              <li class="nav-item"> <button class=btn id="log-out-btn">Log out</button>
+              <li class="nav-item"> <button class="mt-2 m-0 pt-0 pb-0 btn btn-danger btn-sm" id="log-out-btn">Log out</button>
             </ul>
           </div>
         </div>`;

@@ -28,29 +28,33 @@ async function fetchPosts() {
 
 export async function generatePosts(posts) {
   for (let i = 0; i < posts.length; i++) {
+    const feedPost = document.createElement("div");
+    feedPost.classList = "container mx-auto mt-5 ";
     let postSrc = "";
     let postAlt = "";
     if (posts[i].media === null || posts[i].media === undefined) {
       postSrc = "https://i.imghippo.com/files/AVMh8683c.png";
-      postAlt = "Placeholder: Grey mountains and sun";
+      postAlt = "Placeholder: Large camera next to tiny lake";
     } else {
       postSrc = posts[i].media.url;
       postAlt = "A post by" + `${posts[i].author.name}`;
     }
-    displayContainer.innerHTML = `
-<div>
+
+    feedPost.innerHTML = `
+
 <a href= "
-./profile.html?name="${posts[i].author.name}>
-<img src= ${posts[i].author.avatar.url} />
+./profile.html?name=${posts[i].author.name}" class="d-flex align-items-end mb-4 text-dark text-decoration-none">
+<img src= ${posts[i].author.avatar.url} class="rounded-circle w-25 pe-2"/>
 <p>${posts[i].author.name}</p>
 </a>
-<a href ="./post.html?id=${posts[i].id}">
+<a href ="./post.html?id=${posts[i].id}" class="d-flex flex-column text-center text-dark text-decoration-none">
 <h2>${posts[i].title}</h2>
-<img src=${postSrc} alt=${postAlt} />
-<p>${posts[i].body}</p>
+<img src=${postSrc} alt=${postAlt} class="img-thumbnail"/>
+<p class="">${posts[i].body}</p>
 </a>
-</div>
+
 `;
+    displayContainer.append(feedPost);
   }
 }
 
