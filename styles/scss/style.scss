@@ -1,0 +1,9 @@
+
+@use "../../node_modules/bootstrap/scss/bootstrap.scss";
+@use "sass:map";
+@use "variables";
+@import url('https://fonts.googleapis.com/css2?family=Tsukimi+Rounded&display=swap');
+
+body{
+  font-family: "Tsukimi Rounded", sans-serif !important;
+}

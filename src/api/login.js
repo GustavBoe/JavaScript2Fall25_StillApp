@@ -1,8 +1,15 @@
-import { addToLocalStorage, logOut } from "..//utils/storage.js";
+import {
+  addToLocalStorage,
+  getFromLocalStorage,
+  logOut,
+} from "..//utils/storage.js";
 import { AUTH_LOGIN_URL, loginForm, logoutButton } from "..//utils/const.js";
 import { createHeader } from "../components/headerFooterLoader.js";
-
+if (getFromLocalStorage("accessToken")) {
+  window.location.href = "./index.html";
+}
 createHeader();
+
 async function loginUser(userDetails) {
   try {
     const fetchOptions = {
@@ -25,14 +32,12 @@ async function loginUser(userDetails) {
   }
 }
 async function onLoginFormSubmit(event) {
+  // Checking code taken from "https://stackoverflow.com/questions/49219399/make-html-input-contain-something-to-validate"
   event.preventDefault();
+
   const formData = new FormData(event.target);
   const formFields = Object.fromEntries(formData);
   await loginUser(formFields);
-
-  window.location.href = "./index.html";
+  location.href = "./index.html";
 }
-
 loginForm.addEventListener("submit", onLoginFormSubmit);
-
-logoutButton.addEventListener("click", logOut);
