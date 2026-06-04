@@ -28,19 +28,25 @@ async function fetchPosts() {
 
 export async function generatePosts(posts) {
   for (let i = 0; i < posts.length; i++) {
+    const eachPostContainer = document.createElement("div");
+    eachPostContainer.classList = "mb-5 flex flex-col gap-2 min-w-100";
     const userContainer = document.createElement("a");
-    userContainer.classList = "user-container-feed";
+    userContainer.classList = "flex items-center  gap-2";
     userContainer.setAttribute(
       "href",
       `./profile.html?name=${posts[i].author.name}`,
     );
+    const profilePicContainer = document.createElement("div");
+    profilePicContainer.classList = "h-15 w-15 overflow-clip rounded-full";
     const profilePic = document.createElement("img");
-    profilePic.src = posts[i].author.avatar.url;
-    profilePic.classList = "profile-pic-feed";
 
+    profilePic.src = posts[i].author.avatar.url;
+    profilePic.onerror = () => {
+      profilePic.src = "https://i.imghippo.com/files/IZs8626q.png";
+    };
+    profilePicContainer.append(profilePic);
     const profileUsername = document.createElement("p");
     profileUsername.textContent = posts[i].author.name;
-    profileUsername.classList = "profile-username-feed";
 
     const postContainer = document.createElement("a");
     postContainer.setAttribute("href", `./post.html?id=${posts[i].id}`);
@@ -48,22 +54,36 @@ export async function generatePosts(posts) {
 
     const postTitle = document.createElement("h2");
     postTitle.textContent = posts[i].title;
-    postTitle.classList = "post-title-feed";
+    postTitle.classList = "mt-2 font-medium pl-2";
+
+    const postImageContainer = document.createElement("div");
+    postImageContainer.classList = "h-50 w-100 overflow-hidden border";
     const postImage = document.createElement("img");
-    postImage.classList = "post-image-feed";
-    if (posts[i].media) {
-      postImage.src = posts[i].media.url;
+    postImage.classList = "object-cover w-full h-full";
+    if (
+      posts[i].media === null ||
+      posts[i].media.url === undefined ||
+      posts[i].media.url.includes("https://i.imgur.com")
+    ) {
+      postImage.src = "https://i.imghippo.com/files/NbAO4967o.png";
     } else {
-      postImage.src = "https://i.imghippo.com/files/AVMh8683c.png";
+      postImage.src = posts[i].media.url;
     }
 
+    postImageContainer.append(postImage);
     const postBody = document.createElement("p");
-    postBody.textContent = posts[i].body;
-    postBody.classList = "post-body-feed";
-    userContainer.append(profilePic, profileUsername);
-    postContainer.append(postTitle, postImage, postBody);
+    if (posts[i].body.length >= 50) {
+      postBody.textContent = posts[i].body.slice(0, 50) + "...";
+    } else {
+      postBody.textContent = posts[i].body.slice(0, 49);
+    }
 
-    displayContainer.append(userContainer, postContainer);
+    postBody.classList = "max-w-100 opacity-50";
+    userContainer.append(profilePicContainer, profileUsername);
+    postContainer.append(postImageContainer, postTitle);
+
+    eachPostContainer.append(userContainer, postContainer);
+    displayContainer.append(eachPostContainer);
   }
 }
 
