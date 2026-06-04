@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,32 +8,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Tsukimi+Rounded&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./src/style.css" />
-    <script
-      src="https://kit.fontawesome.com/ebc3e386e0.js"
-      crossorigin="anonymous"
-    ></script>
+      rel="stylesheet" />
+    <link href="./src/output.css" rel="stylesheet" />
+
     <script type="module" src="./src/api/postsServices.js" defer></script>
   </head>
   <body>
     <header id="desktop-header" class="desktop-header"></header>
-    <h1 class="create-heading tsukimi-rounded-regular">Create a post</h1>
-    <form id="create-form">
-      <label for="title">Title*</label>
-      <input name="title" id="title" required class="create-title" />
-      <label for="url">Image URL</label>
-      <input type="url" name="url" id="url" class="create-url" />
-      <textarea
-        name="body"
-        id="body"
-        cols="25"
-        rows="5"
-        placeholder="Caption your Still photo"
-        class="create-textarea"
-      ></textarea>
-      <button class="create-button">Create post</button>
-    </form>
+    <section class="flex flex-col items-center gap-10 mx-auto max-w-100">
+      <h1 class="font-tsukimi text-3xl">Create a post</h1>
+      <form
+        id="create-form"
+        class="flex flex-col items-center justify-items-center text-left gap-5 w-[40%]">
+        ¨
+        <div class="flex flex-col items-center w-full">
+          <label for="title" class="self-start">Title</label>
+          <input
+            name="title"
+            id="title"
+            required
+            class="border rounded-sm pl-2 w-full" />
+        </div>
+        <div class="flex flex-col items-center w-full">
+          <label for="url" class="self-start">Image URL</label>
+          <input
+            type="url"
+            name="url"
+            id="url"
+            class="border rounded-sm pl-2 w-full" />
+        </div>
+
+        <textarea
+          name="body"
+          id="body"
+          cols="25"
+          rows="5"
+          placeholder="Caption your Still photo"
+          class="border rounded-sm pl-2 w-full"></textarea>
+        <button class="border-2 px-4 py-2 hover:bg-black hover:text-white">
+          Create post
+        </button>
+      </form>
+    </section>
   </body>
 </html>
