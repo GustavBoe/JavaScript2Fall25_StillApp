@@ -32,7 +32,7 @@ export async function generatePosts(posts) {
     userContainer.classList = "user-container-feed";
     userContainer.setAttribute(
       "href",
-      `./profile.html?name=${posts[i].author.name}`
+      `./profile.html?name=${posts[i].author.name}`,
     );
     const profilePic = document.createElement("img");
     profilePic.src = posts[i].author.avatar.url;
