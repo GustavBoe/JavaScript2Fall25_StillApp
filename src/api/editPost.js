@@ -26,7 +26,7 @@ async function renderEditedPost(post) {
   if (post.media) {
     editFormUrl.value = post.media.url;
   } else {
-    editFormUrl.value = "https://i.imghippo.com/files/AVMh8683c.png";
+    editFormUrl.value = "https://i.imghippo.com/files/NbAO4967o.png";
   }
 }
 
@@ -85,6 +85,9 @@ function onEditFormSubmit(event) {
     url: postFields.url,
     alt: postFields.alt,
   };
+  if (media.url === "") {
+    media.url = "https://i.imghippo.com/files/NbAO4967o.png";
+  }
   postFields.media = media;
   editPost(postFields);
 }

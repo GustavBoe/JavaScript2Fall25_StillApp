@@ -6,9 +6,10 @@ import { createHeader } from "./headerFooterLoader.js";
 
 async function generateSinglePost(post) {
   const postContainer = document.createElement("div");
-  postContainer.classList = "post-container";
+  postContainer.classList =
+    "mx-auto max-w-[80%] flex flex-col items-center gap-5";
   const postTitle = document.createElement("h1");
-  postTitle.classList = "single-title";
+  postTitle.classList = "font-tsukimi text-3xl text-center";
   postTitle.textContent = post.title;
 
   const postMedia = document.createElement("img");
@@ -17,14 +18,14 @@ async function generateSinglePost(post) {
     postMedia.src = post.media.url;
     postMedia.alt = post.media.alt;
   } else {
-    postMedia.src = "https://i.imghippo.com/files/AVMh8683c.png";
-    postMedia.alt = "Placeholder image of a dark grey mountain and a sun";
+    postMedia.src = "https://i.imghippo.com/files/NbAO4967o.png";
+    postMedia.alt = "Placeholder Still";
   }
 
   const postBody = document.createElement("p");
-  postBody.classList = "single-body";
+  postBody.classList = "text-center";
   postBody.textContent = post.body;
-  postContainer.append(postTitle, postMedia, postBody);
+  postContainer.append(postMedia, postTitle, postBody);
   if (profileName === post.author.name) {
     const sendToEditButton = document.createElement("button");
     sendToEditButton.classList = "edit-button";

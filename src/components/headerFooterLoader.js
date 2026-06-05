@@ -49,5 +49,4 @@ export function createHeader() {
   headerNavigation.append(headerLogo);
   headerNavigation.append(linksContainer);
   pageHeader.append(headerNavigation);
-  pageHeader.classList.add("mb-15");
 }
