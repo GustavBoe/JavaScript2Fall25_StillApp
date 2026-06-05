@@ -26,7 +26,7 @@ export const registerButton = document.getElementById("register-button");
 
 //singlePost.js//
 export const singlePostContainer = document.getElementById(
-  "single-post-container"
+  "single-post-container",
 );
 export const queryString = window.location.search;
 export const urlParams = new URLSearchParams(queryString);
@@ -57,15 +57,20 @@ export const following = getFromLocalStorage("followingNames");
 export const PROFILE_POSTS_URL = `${PROFILE_URL}?_posts=true&_following=true`;
 export const profileContainer = document.getElementById("profile-container");
 export const profilePostsContainer = document.getElementById(
-  "profile-posts-container"
+  "profile-posts-container",
 );
 //Placeholders
 export const loggedOutText = `
-      <div class="placeholder-container">
-      <p class="tsukimi-rounded-regular" >Get started at Still!</p>
-      <div class="index-button-container">
-        <button class="login-button" id="login-button">Log in</button>
+      <div class="flex flex-col items-center mt-40 gap-5">
+      <div class="flex items-end gap-2 text-xl"> 
+      <h1>Get started at </h1>
+      <p class="font-tsukimi text-4xl">Still</p>
+      </div>
+
+     
+      <div class="flex flex-col gap-2 items-center">
+        <button class="border-2 px-4 py-2 hover:bg-black hover:text-white" id="login-button">Log in</button>
         <p>Or</p>
-        <button class="register-button" id="register-button">Create new profile</button>
+        <button class="border-2 px-4 py-2 hover:bg-black hover:text-white" id="register-button">Create new profile</button>
       </div>
       </div>`;
