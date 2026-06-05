@@ -16,11 +16,11 @@ import { createHeader } from "./components/headerFooterLoader.js";
 fetchFollowing();
 async function renderProfile(profile) {
   const profilePageBannerContainer = document.createElement("div");
-  profilePageBannerContainer.classList = "w-full max-h-25 overflow-hidden";
+  profilePageBannerContainer.classList = "w-full max-h-25 overflow-clip";
   const profilePageBanner = document.createElement("img");
   profilePageBanner.src = profile.banner.url;
   profilePageBanner.alt = profile.banner.alt;
-  profilePageBanner.classList = "object-cover";
+  profilePageBanner.classList = "object-cover object-center w-full";
 
   profilePageBannerContainer.append(profilePageBanner);
 
