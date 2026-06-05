@@ -59,9 +59,15 @@ async function renderProfile(profile) {
   }
 
   const profilePageBio = document.createElement("p");
-  profilePageBio.textContent = profile.bio;
-  profilePageBio.classList =
-    "max-w-[70%] border border-black/30 p-2 break-words mt-5 mx-auto";
+  if (!profile.bio) {
+    profilePageBio.textContent = "No bio to show";
+    profilePageBio.classList =
+      "max-w-[70%] min-h-20 border border-black/30 text-black/25 p-2 break-words mt-5 mx-auto";
+  } else {
+    profilePageBio.textContent = profile.bio;
+    profilePageBio.classList =
+      "max-w-[70%] min-h-20 border border-black/30  text-black/85 p-2 break-words mt-5 mx-auto";
+  }
 
   profileInfoContainer.append(
     profilePageImageContainer,

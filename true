@@ -8,11 +8,9 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-amber-200: oklch(92.4% 0.12 95.746);
     --color-amber-700: oklch(55.5% 0.163 48.998);
     --color-amber-800: oklch(47.3% 0.137 46.201);
     --color-amber-950: oklch(27.9% 0.077 45.635);
-    --color-gray-200: oklch(92.8% 0.006 264.531);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -224,9 +222,6 @@
   .h-15 {
     height: calc(var(--spacing) * 15);
   }
-  .h-20 {
-    height: calc(var(--spacing) * 20);
-  }
   .h-50 {
     height: calc(var(--spacing) * 50);
   }
@@ -241,9 +236,6 @@
   }
   .max-h-25 {
     max-height: calc(var(--spacing) * 25);
-  }
-  .min-h-20 {
-    min-height: calc(var(--spacing) * 20);
   }
   .w-12 {
     width: calc(var(--spacing) * 12);
@@ -369,9 +361,6 @@
       border-color: color-mix(in oklab, var(--color-black) 30%, transparent);
     }
   }
-  .bg-amber-200 {
-    background-color: var(--color-amber-200);
-  }
   .bg-amber-800 {
     background-color: var(--color-amber-800);
   }
@@ -398,9 +387,6 @@
   }
   .pl-2 {
     padding-left: calc(var(--spacing) * 2);
-  }
-  .pl-5 {
-    padding-left: calc(var(--spacing) * 5);
   }
   .text-center {
     text-align: center;
@@ -430,39 +416,6 @@
   .break-words {
     overflow-wrap: break-word;
   }
-  .text-\[black\/20\] {
-    color: black/20;
-  }
-  .text-\[black\/70\] {
-    color: black/70;
-  }
-  .text-black\/25 {
-    color: color-mix(in srgb, #000 25%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-black) 25%, transparent);
-    }
-  }
-  .text-black\/40 {
-    color: color-mix(in srgb, #000 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-black) 40%, transparent);
-    }
-  }
-  .text-black\/50 {
-    color: color-mix(in srgb, #000 50%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-black) 50%, transparent);
-    }
-  }
-  .text-black\/85 {
-    color: color-mix(in srgb, #000 85%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-black) 85%, transparent);
-    }
-  }
-  .text-gray-200 {
-    color: var(--color-gray-200);
-  }
   .text-white {
     color: var(--color-white);
   }
@@ -475,13 +428,6 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
-  }
-  .hover\:border-white {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-white);
-      }
-    }
   }
   .hover\:bg-amber-700 {
     &:hover {

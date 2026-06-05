@@ -7,7 +7,7 @@ import { createHeader } from "./headerFooterLoader.js";
 async function generateSinglePost(post) {
   const postContainer = document.createElement("div");
   postContainer.classList =
-    "mx-auto max-w-[80%] flex flex-col items-center gap-5";
+    "mx-auto max-w-[80%] flex flex-col items-center gap-5 h-fit";
   const postTitle = document.createElement("h1");
   postTitle.classList = "font-tsukimi text-3xl text-center";
   postTitle.textContent = post.title;
@@ -25,7 +25,28 @@ async function generateSinglePost(post) {
   const postBody = document.createElement("p");
   postBody.classList = "text-center";
   postBody.textContent = post.body;
-  postContainer.append(postMedia, postTitle, postBody);
+
+  const profileContainer = document.createElement("div");
+  profileContainer.classList =
+    "h-20 w-[80%] border-2 flex space-around items-center pl-5 gap-3 hover:bg-black hover:text-white hover:border-white";
+
+  const profileImageContainer = document.createElement("div");
+  profileImageContainer.classList =
+    "h-15 w-15 rounded-full border overflow-hidden";
+
+  const profileImage = document.createElement("img");
+  profileImage.src = post.author.avatar.url;
+  profileImage.alt = post.author.avatar.alt;
+
+  const postAuthorLink = document.createElement("a");
+  postAuthorLink.setAttribute(
+    "href",
+    `./profile.html?name=${post.author.name}`,
+  );
+  postAuthorLink.textContent = `${post.author.name}`;
+  profileImageContainer.append(profileImage);
+  profileContainer.append(profileImageContainer, postAuthorLink);
+  postContainer.append(postMedia, postTitle, postBody, profileContainer);
   if (profileName === post.author.name) {
     const sendToEditButton = document.createElement("button");
     sendToEditButton.classList = "edit-button";
