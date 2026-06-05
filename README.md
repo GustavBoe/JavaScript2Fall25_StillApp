@@ -29,11 +29,11 @@ npm run dev
 
 ## Technologies used
 
-[JavaScript] (https://262.ecma-international.org/)
+[JavaScript](https://262.ecma-international.org/)
 
-HTML
+HTML5
 
-[TailwindCSS_v4] (https://tailwindcss.com/docs)
+[TailwindCSS_v4](https://tailwindcss.com/docs)
 
 ## Contact
 
